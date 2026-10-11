@@ -1,0 +1,20 @@
+# Files Cloudflare Pages must not try to upload.
+#
+# Cloudflare Pages refuses any single file over 25 MiB. These five puzzle packs are
+# 25.3-25.8 MiB and are already optimally compressed - a lossless rewrite saved 0.0% -
+# so the only way under the limit would be downsampling, which makes the puzzle grids
+# unreadable.
+#
+# They stay in this repo and are served by GitHub Pages instead. Their pack pages link
+# to them by absolute github.io URL, so the download works whether the page itself was
+# served by Cloudflare or by GitHub. word-search-vol1 and vol2 are live on KDP with
+# printed QR codes, so those pages have to keep working.
+#
+# If a future pack exceeds 25 MiB, add it here AND point its page's href at the
+# github.io copy, or the download will 404 on oroenigma.com.
+
+crosswords/crosswords-printable-pack.pdf
+puzzles/puzzles-printable-pack.pdf
+wordsearch/wordsearch-printable-pack.pdf
+wordsearch4/wordsearch4-printable-pack.pdf
+wordsearch5/wordsearch5-printable-pack.pdf
