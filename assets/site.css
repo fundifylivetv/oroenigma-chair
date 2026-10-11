@@ -1,0 +1,177 @@
+/* Oro Enigma - shared shell for oroenigma.com.
+   Loaded by the home page, the shop, the book catalogue and the publishing page so the header,
+   nav and footer look like one site. Page-specific rules stay in each page.
+
+   Served by Cloudflare Pages. Colours match the printables themselves: deep green, gold, warm
+   paper - the same palette the PDFs and the brand marks are drawn in. */
+
+:root {
+  --ink: #16202b;
+  --muted: #5a6672;
+  --line: #e3e7ea;
+  --accent: #1a4e38;
+  --gold: #b78a48;
+  --bg: #fbf9f5;
+  --card: #ffffff;
+  --shadow: 0 1px 2px rgba(22, 32, 43, .05), 0 8px 24px rgba(22, 32, 43, .06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ink: #e8edf2;
+    --muted: #9fb0bf;
+    --line: #2a3642;
+    --accent: #6fcf97;
+    --gold: #d6ab66;
+    --bg: #121a22;
+    --card: #18222c;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .28);
+  }
+}
+
+:root[data-theme="dark"] {
+  --ink: #e8edf2;
+  --muted: #9fb0bf;
+  --line: #2a3642;
+  --accent: #6fcf97;
+  --gold: #d6ab66;
+  --bg: #121a22;
+  --card: #18222c;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); }
+
+.wrap {
+  max-width: 1020px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ---------------------------------------------------------------- header */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 70px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1.12rem;
+  letter-spacing: .01em;
+}
+
+.brand img { display: block; border-radius: 50%; }
+
+.nav {
+  display: flex;
+  gap: 8px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: .95rem;
+  flex-wrap: wrap;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.nav a:hover { background: rgba(26, 78, 56, .08); }
+
+.nav a[aria-current="page"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+.btn {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 1rem;
+  padding: 13px 28px;
+  border-radius: 999px;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  line-height: 1.2;
+}
+
+.btn[disabled] { background: var(--muted); cursor: default; opacity: .7; }
+
+.btn-alt {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+}
+
+/* ---------------------------------------------------------------- footer */
+
+.site-footer {
+  margin-top: 72px;
+  border-top: 1px solid var(--line);
+  background: var(--card);
+}
+
+.site-footer .wrap {
+  padding-top: 32px;
+  padding-bottom: 40px;
+  color: var(--muted);
+  font-size: .92rem;
+}
+
+.site-footer .cols {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.site-footer h3 {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: .78rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+.site-footer ul { list-style: none; padding: 0; margin: 0; }
+.site-footer li { padding: 3px 0; }
+
+@media (max-width: 560px) {
+  .site-header .wrap { min-height: 0; padding-top: 12px; padding-bottom: 12px; }
+  .nav { width: 100%; }
+}
