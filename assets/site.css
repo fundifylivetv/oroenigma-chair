@@ -60,12 +60,18 @@ a { color: var(--accent); }
 
 /* ---------------------------------------------------------------- header */
 
+/* Every property here is set explicitly rather than left to default, because /publishing/
+   styles bare `header` and `nav` elements (green block, 44px padding, sticky nav). Those rules
+   land on the shared shell too and distorted it badly until the shell pinned its own values. */
 .site-header {
   border-bottom: 1px solid var(--line);
   background: var(--bg);
+  color: var(--ink);
   position: sticky;
   top: 0;
   z-index: 20;
+  padding: 0;
+  margin: 0;
 }
 
 .site-header .wrap {
@@ -75,6 +81,16 @@ a { color: var(--accent); }
   gap: 16px;
   min-height: 70px;
   flex-wrap: wrap;
+  padding: 0 16px;
+  max-width: 1020px;
+}
+
+.site-header .nav {
+  position: static;
+  background: none;
+  border: 0;
+  padding: 0;
+  backdrop-filter: none;
 }
 
 .brand {
@@ -98,17 +114,20 @@ a { color: var(--accent); }
   flex-wrap: wrap;
 }
 
-.nav a {
+.site-header .nav a {
   text-decoration: none;
   color: var(--ink);
   padding: 8px 14px;
+  margin: 0;
   border-radius: 999px;
   white-space: nowrap;
+  font-size: .95rem;
+  display: inline-block;
 }
 
-.nav a:hover { background: rgba(26, 78, 56, .08); }
+.site-header .nav a:hover { background: rgba(26, 78, 56, .08); }
 
-.nav a[aria-current="page"] {
+.site-header .nav a[aria-current="page"] {
   background: var(--accent);
   color: #fff;
 }
